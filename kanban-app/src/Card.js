@@ -2,6 +2,7 @@
 import React from 'react';
 import TaskList from './TaskList'
 import PropTypes from 'prop-types';
+import styles from './Card.css';
 
 export default class Card extends React.Component{
     constructor(){
@@ -14,34 +15,37 @@ export default class Card extends React.Component{
             showDetails: true
         }
     }
+
+    onTitleClick(event){
+        this.setState({ 
+            showDetails: !this.state.showDetails
+        })
+    }
+
     render(){
-        let cardDetails;
-        if(this.state.showDetails){
-            cardDetails = (
-                <div className='Card__Details'>
-                    {this.props.description}
-                    <TaskList key= {this.props.tasks.id} tasks= {this.props.tasks} />
-                </div>
-        )}
-        const sideColorBar = {
-          position : 'absolute',
-          zIndex: -1,
-          top:0,
-          left:0,
-          bottom:0,
-          width:7,
-          backgroundColor:this.props.color
-        };
+        // let cardDetails;
+        // if(this.state.showDetails){
+        //     cardDetails = (
+        //         <div>
+        //             {this.props.description}
+        //             <TaskList key= {this.props.tasks.id} tasks= {this.props.tasks} />
+        //         </div>
+        // )}
 
         return(
-            <div className='Card'>
-                <div style={ sideColorBar } />
-                <div className='Card__Title' onClick={() => {
-                    this.setState( { showDetails: !this.state.showDetails} );
-                }}>
+            <div className={ styles.Card }>
+                <div className={ styles[`SideBar--${this.props.status}`]} />
+                <div className={ styles[ this.state.showDetails ? 'Title--is-open' : 'Title'] } 
+                    onClick={this.onTitleClick.bind(this)}>
                     { this.props.title }
                 </div>
-                 { cardDetails }
+                 { !this.state.showDetails ? null : <div>
+                        {this.props.description}
+                        <TaskList 
+                            key= {this.props.tasks.id}
+                            cardId={this.props.id} 
+                            tasks= {this.props.tasks} />
+                </div> }
             </div>
         )
     }

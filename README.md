@@ -1,117 +1,34 @@
-## 복습
-mysite2 (servlet jsp), Maven helloreact(Dom API), webpack  
-mysite3 (spring), Maven helloreact(react), webpack
-
-## 내용 요약
-
-#### [project-ex01]  
-   ES6 for Reac  
-   ***
-#### [project-ex02]   
-   전통적인 Dom API 기반의 앱   
-    npm init -y project menifest package.json 생성      
-***
- #### [project-ex03]    
-   파일 나눠서 작성해 보기
-***
-#### [project-ex04]   
-    ES6 모듈 지원 기반으로 작성해 보기
-***
-#### [project-ex05]   
-    번들링
-***
-
-> 1. 프로젝트 생성 및 메니페스트(package.json) 초기화    
-> > 1-1. 프로젝틑 디렉토리 생성   
-> > 1-2. src, public 디렉토리 생성   
-> 2. 메니페스트(package.json) 초기화   
-> > npm init -y   
-> 3. webpack 설치   
-> > npm i -D webpack webpack-cli webpack-dev-server   
-> > npx webpack -v   
-> 4. webpack 설정(webpack.config.js)   
-> 5. npm scripts   
-
-#### [project-ex06]   
-    1~5 까지는 project-ex05와 동일
-
-> 6. React Refactoring
-> > -- react 라이브러리 패키지 설치   
-> > > npm i -D react react-dom   
-
-> > -- index.js , APP.js 코드 수정   
-> 7. 번들링
-> > Babel 설치
-> > > npm i -D @babel/core babel-loader @babel/preset-env @babel/preset-react
-
-> > babel loader 설정 (webpack.config.js)   
-> > babel 설정(babel.config.json) 
-
-
-#### [project-ex07] component 구현 & 컴포넌트 속성
-> 1. 프로젝트 생성 및 메니페스트(package.json) 초기화    
-> > 1-1. 프로젝틑 디렉토리 생성   
-> > 1-2. src, public 디렉토리 생성   
-> 2. 메니페스트(package.json) 초기화   
-> > npm init -y   
-> 3. webpack 설치   
-> > npm i -D webpack webpack-cli webpack-dev-server react react-dom @babel/core babel-loader @babel/preset-env @babel/preset-react   
-> > npx webpack -v   
-> 4. webpack 설정(webpack.config.js)   
-``` 
-const path = require('path');
-
-module.exports = {
-    entry: path.resolve('src/index.js'),
-    output: {
-        path:path.resolve('public'),
-        filename: 'bundle.js'
-    },
-    module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        }]
-    },
-    devServer: {
-        contentBase: path.resolve('public'),
-        host: '0.0.0.0',
-        port: 8080,
-        inline: true,
-        liveReload: true,
-        hot: false,
-        compress: true,
-        historyApiFallback: true
-    }    
-} 
-```
-> 5. babel 설정
-``` 
-{
-    "presets": [
-        [
-            "@babel/env",{
-                "targets": {
-                    "ie": "11",
-                    "edge": "80",
-                    "firefox": "73",
-                    "chrome": "82",
-                    "opera": "69",
-                    "safari": "13"
-                }
-            }
-        ],"@babel/preset-react"
-    ]
-}
-```
-> 6. npm scripts(package.json, scripts 섹션 수정)   
-```
-"scripts": {
-    "build": "npx webpack",
-    "start": "npx webpack-dev-server"
-  }
-  ```
-> 7. 화면 디자인
-> 8. 컴포넌트 작성 + 조합 
-> 9. 속성
+# React Practices
+<pre>
+1) 기본개념(Project-ex07) : 개발환경 설정(Webpack, Babel)
+			  2가지 개념 : 속성, 상태
+2) Virtual Dom : ReactDom API
+3) JSX
+4) Component
+	4-1) Component Styling
+	  (1) inline - project-ex08
+	  (2) hybrid
+		- css 번들링
+		- css module
+		- css precessor(SASS, LESS)
+	4-2) Working with Form(Controller & Uncontrolled) project-ex11, project-ex12
+		제어 컴포넌트
+			- 컴포넌트 UI 인터페이스 외부에서는 직접 값(속성)을 변경 x
+			- 컴포넌트 UI 인터페이스 외부에서는 직접 값(상태)을 변경 x
+			- 외부에서 값(상태)을 변경할 수 없는 컴포넌트를 비제어 컴포넌트라고 한다.
+		비제어 컴포넌트
+			- 외부에서 값(상태)을 변경할 수 없는 컴포넌트를 비제어 컴포넌트
+			- 비제어 컴포넌트도 사용처가 있다.
+	4-3) 속성 Validation project-ex13
+	4-4) 상태(stateful) 컴포넌트 vs 순수 Component 컴포넌트 작성/중첩
+		- 데이터 흐름 & 컴포넌트 총신
+		- Component 생명주기 & Data Fetching
+		- Routing
+	4-5) 데이터 흐름 & 컴포넌트 통신
+	4-6) Component 생명주기 & Data Fetching(API 서버사용)
+		- Routing
+	4-7) Immutablity(불변성)
+5) Routing
+6) Flux(Reactive Programming) : Redux(React.js), WebFlux(Spring), Nuxt(Vue.Js)
+7) Testing
+</pre>

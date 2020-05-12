@@ -13,19 +13,12 @@ module.exports = {
             loader: 'babel-loader'
         }, {
             test: /\.css$/,
-            loader: [{
-                loader: 'style-loader'
-                }, {
-                loader: 'css-loader',
-                options: {
-                    modules: true
-                }
-            }]
+            loader: ['style-loader','css-loader']
     }]},
     devServer: {
         contentBase: path.resolve('public'),
         host: '0.0.0.0',
-        port: 9999,
+        port: 8080,
         inline: true,
         liveReload: true,
         hot: false,
