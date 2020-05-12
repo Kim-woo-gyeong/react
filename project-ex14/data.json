@@ -1,0 +1,27 @@
+{
+    "no":1,
+    "orderNo":"20200512-0000001",
+    "description" : "청데님외 2건",
+    "status":"재고확인중",
+    "receive":"서울시 은평구 진광동..",
+    "payment":{
+        "price":10000,
+        "method":"Credit Card"
+    },
+    "products":[{
+        "no":"p001-001",
+        "name":"스트라이프 팬츠",
+        "price":1000,
+        "amount":1
+    }, {
+        "no":"p001-002",
+        "name":"화이트면티",
+        "price":2000,
+        "amount":1
+    }, {
+        "no":"p001-003",
+        "name":"야구",
+        "price":1500,
+        "amount":1
+    }]
+}
